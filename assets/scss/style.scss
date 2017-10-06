@@ -1,0 +1,76 @@
+/*!
+Theme Name: krivaten-wp-core
+Theme URI: http://underscores.me/
+Author: Kris Van Houten
+Author URI: http://krivaten.com
+Description: We\'ll see...
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: krivaten-wp-core
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+*/
+
+
+//
+// ESSENTIALS
+//
+@import './node_modules/elassus/scss/aliases';
+@import './node_modules/elassus/scss/variables';
+@import './node_modules/elassus/scss/mixins';
+
+@import 'variables';
+//
+// UTILITIES
+//
+@import './node_modules/elassus/scss/utilities/normalize';
+@import './node_modules/elassus/scss/utilities/helpers';
+@import './node_modules/elassus/scss/utilities/typography';
+@import './node_modules/elassus/scss/utilities/container';
+@import './node_modules/elassus/scss/utilities/screen-reader';
+@import './node_modules/elassus/scss/utilities/toggles';
+
+//
+// MODULES
+//
+@import './node_modules/elassus/scss/modules/aspect-ratio';
+@import './node_modules/elassus/scss/modules/background-color';
+@import './node_modules/elassus/scss/modules/background-position';
+@import './node_modules/elassus/scss/modules/background-size';
+@import './node_modules/elassus/scss/modules/border';
+@import './node_modules/elassus/scss/modules/border-color';
+@import './node_modules/elassus/scss/modules/border-radius';
+@import './node_modules/elassus/scss/modules/border-style';
+@import './node_modules/elassus/scss/modules/box-shadow';
+@import './node_modules/elassus/scss/modules/box-sizing';
+@import './node_modules/elassus/scss/modules/clear';
+@import './node_modules/elassus/scss/modules/color';
+@import './node_modules/elassus/scss/modules/coordinates';
+@import './node_modules/elassus/scss/modules/display';
+@import './node_modules/elassus/scss/modules/fill';
+@import './node_modules/elassus/scss/modules/flexbox';
+@import './node_modules/elassus/scss/modules/float';
+@import './node_modules/elassus/scss/modules/font-family';
+@import './node_modules/elassus/scss/modules/font-size';
+@import './node_modules/elassus/scss/modules/font-style';
+@import './node_modules/elassus/scss/modules/font-weight';
+@import './node_modules/elassus/scss/modules/height';
+@import './node_modules/elassus/scss/modules/line-height';
+@import './node_modules/elassus/scss/modules/list';
+@import './node_modules/elassus/scss/modules/opacity';
+@import './node_modules/elassus/scss/modules/outline';
+@import './node_modules/elassus/scss/modules/overflow';
+@import './node_modules/elassus/scss/modules/position';
+@import './node_modules/elassus/scss/modules/spacing';
+@import './node_modules/elassus/scss/modules/stripe';
+@import './node_modules/elassus/scss/modules/stroke';
+@import './node_modules/elassus/scss/modules/text-align';
+@import './node_modules/elassus/scss/modules/text-decoration';
+@import './node_modules/elassus/scss/modules/text-transform';
+@import './node_modules/elassus/scss/modules/transform';
+@import './node_modules/elassus/scss/modules/transition';
+@import './node_modules/elassus/scss/modules/vertical-align';
+@import './node_modules/elassus/scss/modules/white-space';
+@import './node_modules/elassus/scss/modules/width';
+@import './node_modules/elassus/scss/modules/word-break';
+@import './node_modules/elassus/scss/modules/z-index';

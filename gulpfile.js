@@ -29,34 +29,28 @@
 
 // START Editing Project Variables.
 // Project related.
-var project                 = 'WPGulpTheme'; // Project Name.
-var projectURL              = 'wpgulp.dev'; // Local project URL of your already running WordPress site. Could be something like local.dev or localhost:8888.
+var project                 = 'Krivaten WP Core'; // Project Name.
+var projectURL              = 'http://localhost:8888/communitas/'; // Local project URL of your already running WordPress site. Could be something like local.dev or localhost:8888.
 var productURL              = './'; // Theme/Plugin URL. Leave it like it is, since our gulpfile.js lives in the root folder.
 
 // Translation related.
-var text_domain             = 'WPGULP'; // Your textdomain here.
-var translationFile         = 'WPGULP.pot'; // Name of the transalation file.
+var text_domain             = 'Krivaten WP Core'; // Your textdomain here.
+var translationFile         = 'krivaten-wp-core.pot'; // Name of the transalation file.
 var translationDestination  = './languages' // Where to save the translation files.
-var packageName             = 'WPGULP'; // Package name.
-var bugReport               = 'https://AhmadAwais.com/contact/'; // Where can users report bugs.
-var lastTranslator          = 'Ahmad Awais <your_email@email.com>'; // Last translator Email ID.
-var team                    = 'WPTie <your_email@email.com>'; // Team's Email ID.
+var packageName             = 'krivaten-wp-core'; // Package name.
+var bugReport               = ''; // Where can users report bugs.
+var lastTranslator          = 'Kris Van Houten <krivate@gmail.com>'; // Last translator Email ID.
+var team                    = ''; // Team's Email ID.
 
 // Style related.
-var styleSRC                = './scss/style.scss'; // Path to main .scss file.
+var styleSRC                = './assets/scss/style.scss'; // Path to main .scss file.
 var styleDestination        = './'; // Path to place the compiled CSS file.
 // Default set to root folder.
 
-// JS Vendor related.
-var jsVendorSRC             = './assets/js/vendor/*.js'; // Path to JS vendor folder.
-var jsVendorDestination     = './assets/js/'; // Path to place the compiled JS vendors file.
-var jsVendorFile            = 'vendors'; // Compiled JS vendors file name.
-// Default set to vendors i.e. vendors.js.
-
 // JS Custom related.
-var jsCustomSRC             = './assets/js/custom/*.js'; // Path to JS custom scripts folder.
-var jsCustomDestination     = './assets/js/'; // Path to place the compiled JS custom scripts file.
-var jsCustomFile            = 'custom'; // Compiled JS custom file name.
+var jsCustomSRC             = './assets/js/*.js'; // Path to JS custom scripts folder.
+var jsCustomDestination     = './'; // Path to place the compiled JS custom scripts file.
+var jsCustomFile            = 'script'; // Compiled JS custom file name.
 // Default set to custom i.e. custom.js.
 
 // Images related.
@@ -64,29 +58,13 @@ var imagesSRC               = './assets/img/raw/**/*.{png,jpg,gif,svg}'; // Sour
 var imagesDestination       = './assets/img/'; // Destination folder of optimized images. Must be different from the imagesSRC folder.
 
 // Watch files paths.
-var styleWatchFiles         = './assets/css/**/*.scss'; // Path to all *.scss files inside css folder and inside them.
-var vendorJSWatchFiles      = './assets/js/vendor/*.js'; // Path to all vendor JS files.
-var customJSWatchFiles      = './assets/js/custom/*.js'; // Path to all custom JS files.
+var styleWatchFiles         = './assets/scss/**/*.scss'; // Path to all *.scss files inside css folder and inside them.
+var jsWatchFiles      = './assets/js/*.js'; // Path to all custom JS files.
 var projectPHPWatchFiles    = './**/*.php'; // Path to all PHP files.
 
-
-// Browsers you care about for autoprefixing.
-// Browserlist https        ://github.com/ai/browserslist
 const AUTOPREFIXER_BROWSERS = [
     'last 2 version',
-    '> 1%',
-    'ie >= 9',
-    'ie_mob >= 10',
-    'ff >= 30',
-    'chrome >= 34',
-    'safari >= 7',
-    'opera >= 23',
-    'ios >= 7',
-    'android >= 4',
-    'bb >= 10'
 ];
-
-// STOP Editing Project Variables.
 
 /**
  * Load Plugins.
@@ -207,34 +185,7 @@ gulp.task('styles', function () {
 
 
 /**
- * Task: `vendorJS`.
- *
- * Concatenate and uglify vendor JS scripts.
- *
- * This task does the following:
- *     1. Gets the source folder for JS vendor files
- *     2. Concatenates all the files and generates vendors.js
- *     3. Renames the JS file with suffix .min.js
- *     4. Uglifes/Minifies the JS file and generates vendors.min.js
- */
-gulp.task( 'vendorsJs', function() {
-    gulp.src( jsVendorSRC )
-        .pipe( concat( jsVendorFile + '.js' ) )
-        .pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
-        .pipe( gulp.dest( jsVendorDestination ) )
-        .pipe( rename( {
-            basename: jsVendorFile,
-            suffix: '.min'
-        }))
-        .pipe( uglify() )
-        .pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
-        .pipe( gulp.dest( jsVendorDestination ) )
-        .pipe( notify( { message: 'TASK: "vendorsJs" Completed! 💯', onLast: true } ) );
-});
-
-
-/**
- * Task: `customJS`.
+ * Task: `js`.
  *
  * Concatenate and uglify custom JS scripts.
  *
@@ -244,7 +195,7 @@ gulp.task( 'vendorsJs', function() {
  *     3. Renames the JS file with suffix .min.js
  *     4. Uglifes/Minifies the JS file and generates custom.min.js
  */
-gulp.task( 'customJS', function() {
+gulp.task('js', function() {
     gulp.src( jsCustomSRC )
         .pipe( concat( jsCustomFile + '.js' ) )
         .pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
@@ -256,7 +207,7 @@ gulp.task( 'customJS', function() {
         .pipe( uglify() )
         .pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
         .pipe( gulp.dest( jsCustomDestination ) )
-        .pipe( notify( { message: 'TASK: "customJs" Completed! 💯', onLast: true } ) );
+        .pipe( notify( { message: 'TASK: "js" Completed! 💯', onLast: true } ) );
 });
 
 
@@ -273,7 +224,7 @@ gulp.task( 'customJS', function() {
  * This task will run only once, if you want to run it
  * again, do it with the command `gulp images`.
  */
-gulp.task( 'images', function() {
+gulp.task('images', function() {
     gulp.src( imagesSRC )
         .pipe( imagemin( {
             progressive: true,
@@ -295,7 +246,7 @@ gulp.task( 'images', function() {
  *     3. Applies wpPot with the variable set at the top of this file
  *     4. Generate a .pot file of i18n that can be used for l10n to build .mo file
  */
-gulp.task( 'translate', function () {
+gulp.task('translate', function () {
     return gulp.src( projectPHPWatchFiles )
         .pipe(sort())
         .pipe(wpPot( {
@@ -317,9 +268,8 @@ gulp.task( 'translate', function () {
  *
  * Watches for file changes and runs specific tasks.
  */
-gulp.task( 'default', ['styles', 'vendorsJs', 'customJS', 'images', 'browser-sync'], function () {
-    gulp.watch( projectPHPWatchFiles, reload ); // Reload on PHP file changes.
-    gulp.watch( styleWatchFiles, [ 'styles' ] ); // Reload on SCSS file changes.
-    gulp.watch( vendorJSWatchFiles, [ 'vendorsJs', reload ] ); // Reload on vendorsJs file changes.
-    gulp.watch( customJSWatchFiles, [ 'customJS', reload ] ); // Reload on customJS file changes.
+gulp.task('default', ['styles', 'js', 'images', 'browser-sync'], function () {
+    gulp.watch(projectPHPWatchFiles, reload ); // Reload on PHP file changes.
+    gulp.watch(styleWatchFiles, [ 'styles' ] ); // Reload on SCSS file changes.
+    gulp.watch(jsWatchFiles, [ 'js', reload ] ); // Reload on js file changes.
 });
